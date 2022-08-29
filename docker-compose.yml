@@ -35,26 +35,26 @@ services:
       context: ./TelegramIntelBot
       dockerfile: Dockerfile
     image: vxug-telegramintelbot:swarm-1.2
-      volumes:
-        - type: bind
-          source: ./TelegramIntelBot
-          target: /app
-      secrets:
-        - source: discord_telegram-feed
-          target: telegram-feed
-          uid: '1000'
-          gid: '101'
-          mode: 0440
-        - source: telegram_api_hash
-          target: api_hash
-          uid: '1000'
-          gid: '101'
-          mode: 0440
-        - source: telegram_api_id
-          target: api_id
-          uid: '1000'
-          gid: '101'
-          mode: 0440
+    volumes:
+      - type: bind
+        source: ./TelegramIntelBot
+        target: /app
+    secrets:
+      - source: discord_telegram-feed
+        target: telegram-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: telegram_api_hash
+        target: api_hash
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: telegram_api_id
+        target: api_id
+        uid: '1000'
+        gid: '101'
+        mode: 0440
 secrets:
   telegram_api_hash:
     external: true
