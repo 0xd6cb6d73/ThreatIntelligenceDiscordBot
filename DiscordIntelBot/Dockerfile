@@ -1,6 +1,6 @@
 FROM python:3.10-alpine3.16
 
-LABEL version="swarm-1.4"
+LABEL version="swarm-1.5"
 
 RUN mkdir -p /app/Source
 
@@ -10,7 +10,8 @@ ENV TZ="Europe/Paris"
 
 WORKDIR /app
 
-COPY . ./
+COPY ./requirements.txt ./
+COPY ./Source/*.py ./Source/
 RUN chown -R discordbot:botgroup /app/* && chmod +x ./Source/DiscordIntelBot.py && chmod +x ./Source/Formatting.py
 
 USER discordbot:botgroup

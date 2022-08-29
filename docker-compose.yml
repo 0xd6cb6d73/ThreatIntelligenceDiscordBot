@@ -4,13 +4,11 @@ services:
     build:
       context: ./DiscordIntelBot
       dockerfile: Dockerfile
-    image: vxug-discordintelbot:swarm-1.4
+    image: vxug-discordintelbot:swarm-1.5
     volumes:
-      - type: volume
+      - type: bind
         source: ./DiscordIntelBot/Config
         target: /app/Config
-        volume:
-          nocopy: true
     secrets:
       - source: discord_privsec-feed
         target: privsec-feed
@@ -36,32 +34,27 @@ services:
     build:
       context: ./TelegramIntelBot
       dockerfile: Dockerfile
-    image: vxug-telegramintelbot:swarm-1.1
-    volumes:
-       - type: volume
-         source: ./TelegramIntelBot
-         target: /app
-         volume:
-           nocopy: true
-    secrets:
-      - source: discord_telegram-feed
-        target: telegram-feed
-        uid: '1000'
-        gid: '101'
-        mode: 0440
-      - source: telegram_api_hash
-        target: api_hash
-        uid: '1000'
-        gid: '101'
-        mode: 0440
-      - source: telegram_api_id
-        target: api_id
-        uid: '1000'
-        gid: '101'
-        mode: 0440
-volumes:
-  Config:
-  TelegramIntelBot:
+    image: vxug-telegramintelbot:swarm-1.2
+      volumes:
+        - type: bind
+          source: ./TelegramIntelBot
+          target: /app
+      secrets:
+        - source: discord_telegram-feed
+          target: telegram-feed
+          uid: '1000'
+          gid: '101'
+          mode: 0440
+        - source: telegram_api_hash
+          target: api_hash
+          uid: '1000'
+          gid: '101'
+          mode: 0440
+        - source: telegram_api_id
+          target: api_id
+          uid: '1000'
+          gid: '101'
+          mode: 0440
 secrets:
   telegram_api_hash:
     external: true
