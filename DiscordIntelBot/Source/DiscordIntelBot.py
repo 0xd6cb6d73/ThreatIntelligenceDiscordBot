@@ -16,18 +16,32 @@ from Formatting import format_single_article
 
 # expects the configuration file in the same directory as this script by default, replace if desired otherwise
 configuration_file_path = os.path.join(
-    os.path.split(os.path.abspath(__file__))[0], "Config.txt"
+    os.path.split(os.path.abspath(__file__))[0], "/app/Config/Config.txt"
 )
 
 # put the discord hook urls to the channels you want to receive feeds in here
-private_sector_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-government_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-ransomware_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-# this one is logging of moniotring status only
-status_messages = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
+with open('/run/secrets/privsec-feed', 'r') as f:
+        private_sector_feed = Webhook.from_url(f.read().strip(), adapter=RequestsWebhookAdapter())
+
+with open('/run/secrets/govt-feed', 'r') as f:
+        government_feed = Webhook.from_url(f.read().strip(), adapter=RequestsWebhookAdapter())
+
+with open('/run/secrets/ransomware-feed', 'r') as f:
+        ransomware_feed = Webhook.from_url(f.read().strip(), adapter=RequestsWebhookAdapter())
+
+with open('/run/secrets/status-feed', 'r') as f:
+        status_messages = Webhook.from_url(f.read().strip(), adapter=RequestsWebhookAdapter())
+
+#private_sector_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
+#government_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
+#ransomware_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
+## this one is logging of moniotring status only
+#status_messages = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
 
 private_rss_feed_list = [
     ['https://grahamcluley.com/feed/', 'Graham Cluley'],
+    ['https://www.crowdstrike.com/blog/feed', 'Crowdstrike'],
+    ['https://www.microsoft.com/security/blog/tag/microsoft-security-intelligence/feed/', 'MSTIC'],
     ['https://threatpost.com/feed/', 'Threatpost'],
     ['https://krebsonsecurity.com/feed/', 'Krebs on Security'],
     ['https://www.darkreading.com/rss.xml', 'Dark Reading'],
@@ -59,6 +73,9 @@ gov_rss_feed_list = [
     ["https://www.cisa.gov/uscert/ncas/alerts.xml", "US-CERT CISA"],
     ["https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml", "NCSC"],
     ["https://www.cisecurity.org/feed/advisories", "Center of Internet Security"],
+    ['https://cert.ssi.gouv.fr/cti/feed/', 'CERT-FR menaces et incidents'],
+    ['https://cert.ssi.gouv.fr/actualite/feed/', 'CERT-FR actualites'],
+    ['https://cert.ssi.gouv.fr/alerte/feed/', 'CERT-FR alertes']
 ]
 
 FeedTypes = Enum("FeedTypes", "RSS JSON")

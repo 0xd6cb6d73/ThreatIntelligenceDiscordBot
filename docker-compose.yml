@@ -1,0 +1,71 @@
+version: "3.8"
+services:
+  discordintelbot:
+    build:
+      context: ./DiscordIntelBot
+      dockerfile: Dockerfile
+    image: vxug-discordintelbot:swarm-1.4
+    volumes:
+      - "./DiscordIntelBot/Config:/app/Config"
+    secrets:
+      - source: discord_privsec-feed
+        target: privsec-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: discord_govt-feed
+        target: govt-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: discord_ransomware-feed
+        target: ransomware-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: discord_status-feed
+        target: status-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+  telegramintelbot:
+    build:
+      context: ./TelegramIntelBot
+      dockerfile: Dockerfile
+    image: vxug-telegramintelbot:swarm-1.1
+    volumes:
+      - "./TelegramIntelBot:/app/"
+    secrets:
+      - source: discord_telegram-feed
+        target: telegram-feed
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: telegram_api_hash
+        target: api_hash
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+      - source: telegram_api_id
+        target: api_id
+        uid: '1000'
+        gid: '101'
+        mode: 0440
+volumes:
+  Config:
+  TelegramIntelBot:
+secrets:
+  telegram_api_hash:
+    external: true
+  telegram_api_id:
+    external: true
+  discord_privsec-feed:
+    external: true
+  discord_govt-feed:
+    external: true
+  discord_ransomware-feed:
+    external: true
+  discord_status-feed:
+    external: true
+  discord_telegram-feed:
+    external: true
