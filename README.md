@@ -7,20 +7,24 @@
 ```
 docker secret create <secret name> <path to file containing secret>
 ```
-- Adjust the docker-compose.yml file to fit the secret names to those you chose
+- Adjust the `docker-compose.yml` file to fit the secret names to those you chose
 - Build the docker images
 
 * To build the images
 ```
 cd <project root>
-docker build -t vxug-discordintelbot:XXX ./DiscordIntelBot
-docker build -t vxug-telegramintelbot:XXX ./TelegramIntelBot
+docker build -t vxug-discordintelbot:<XXX> ./DiscordIntelBot
+docker build -t vxug-telegramintelbot:<XXX> ./TelegramIntelBot
 ```
 
 * To start the stack
 ```
 docker stack deploy -c ./docker-compose.yml <stack name>
 ```
+# Telegram bot warning
+The telegram bot needs to have a valid <bot name>.session file at the root of the `TelegramIntelBot` folder. The `docker-compose.yml` file accounts for that by mounting the entire folder to the target directory inside the container.
+
+#################################
 
 # Threat Intelligence Discord Bot
 The vx-underground Threat Intelligence Discord Bot gets updates from various clearnet domains, ransomware threat actor domains, and Telegram channels. This bot will check for updates in intervals of 1800 seconds (omit Telegram bot, this is gotten in real time).
