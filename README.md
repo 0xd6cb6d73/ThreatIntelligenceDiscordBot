@@ -1,3 +1,27 @@
+# Swarmified version
+
+*Preliminary setup
+-Put your api keys into some files somewhere
+-Create the docker swarm if you don't already have one (https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/), it can be a single node
+-Create the swarm secrets
+```
+docker secret create <secret name> <path to file containing secret>
+```
+-Adjust the docker-compose.yml file to fit the secret names to those you chose
+-Build the docker images
+
+*To build the images
+```
+cd <project root>
+docker build -t vxug-discordintelbot:XXX ./DiscordIntelBot
+docker build -t vxug-telegramintelbot:XXX ./TelegramIntelBot
+```
+
+*To start the stack
+```
+docker stack deploy -c ./docker-compose.yml <stack name>
+```
+
 # Threat Intelligence Discord Bot
 The vx-underground Threat Intelligence Discord Bot gets updates from various clearnet domains, ransomware threat actor domains, and Telegram channels. This bot will check for updates in intervals of 1800 seconds (omit Telegram bot, this is gotten in real time).
 
