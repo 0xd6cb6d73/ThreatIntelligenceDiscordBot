@@ -6,7 +6,11 @@ services:
       dockerfile: Dockerfile
     image: vxug-discordintelbot:swarm-1.4
     volumes:
-      - "./DiscordIntelBot/Config:/app/Config"
+      - type: volume
+        source: ./DiscordIntelBot/Config
+        target: /app/Config
+        volume:
+          nocopy: true
     secrets:
       - source: discord_privsec-feed
         target: privsec-feed
@@ -36,7 +40,7 @@ services:
     volumes:
        - type: volume
          source: ./TelegramIntelBot
-         target: ./TelegramIntelBot
+         target: /app
          volume:
            nocopy: true
     secrets:
