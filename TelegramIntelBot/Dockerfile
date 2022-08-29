@@ -1,6 +1,6 @@
 FROM python:3.10-alpine3.16
 
-LABEL version="1.1"
+LABEL version="swarm-1.1"
 
 RUN mkdir -p /app/Source
 RUN mkdir -p /app/TelegramImages

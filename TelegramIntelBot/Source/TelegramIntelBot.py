@@ -11,7 +11,7 @@ image_download_path = os.path.join(os.path.split(os.path.abspath(__file__))[0], 
 # put your telegram api stuff in here
 with open('/run/secrets/api_hash', 'r') as f:
     with open('/run/secrets/api_id', 'r') as g:
-        telegram_client = TelegramClient('vx', g.read().strip(), f.read().strip())
+        telegram_client = TelegramClient('<bot name (arbitrary)>', g.read().strip(), f.read().strip())
 telegram_client.start()
 
 # put the discord hook url to the channel you want to receive feeds in here

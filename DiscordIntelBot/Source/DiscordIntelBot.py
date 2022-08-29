@@ -32,12 +32,6 @@ with open('/run/secrets/ransomware-feed', 'r') as f:
 with open('/run/secrets/status-feed', 'r') as f:
         status_messages = Webhook.from_url(f.read().strip(), adapter=RequestsWebhookAdapter())
 
-#private_sector_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-#government_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-#ransomware_feed = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-## this one is logging of moniotring status only
-#status_messages = Webhook.from_url('https://discord.com/api/webhooks/000/000', adapter=RequestsWebhookAdapter())
-
 private_rss_feed_list = [
     ['https://grahamcluley.com/feed/', 'Graham Cluley'],
     ['https://www.crowdstrike.com/blog/feed', 'Crowdstrike'],

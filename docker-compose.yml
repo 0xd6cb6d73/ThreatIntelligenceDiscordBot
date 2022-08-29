@@ -34,7 +34,11 @@ services:
       dockerfile: Dockerfile
     image: vxug-telegramintelbot:swarm-1.1
     volumes:
-      - "./TelegramIntelBot:/app/"
+       - type: volume
+         source: ./TelegramIntelBot
+         target: ./TelegramIntelBot
+         volume:
+           nocopy: true
     secrets:
       - source: discord_telegram-feed
         target: telegram-feed
