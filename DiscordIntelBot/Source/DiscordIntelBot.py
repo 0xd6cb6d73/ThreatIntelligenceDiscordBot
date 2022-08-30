@@ -43,7 +43,7 @@ private_rss_feed_list = [
     ['https://davinciforensics.co.za/cybersecurity/feed/', 'DaVinci Forensics'],
     ['https://blogs.cisco.com/security/feed', 'Cisco'],
     ['https://www.infosecurity-magazine.com/rss/news/', 'Information Security Magazine'],
-    ['http://feeds.feedburner.com/GoogleOnlineSecurityBlog', 'Google'],
+    ['https://blog.google/threat-analysis-group/rss/', 'Google TAG'],
     ['http://feeds.trendmicro.com/TrendMicroResearch', 'Trend Micro'],
     ['https://www.bleepingcomputer.com/feed/', 'Bleeping Computer'],
     ['https://www.proofpoint.com/us/rss.xml', 'Proof Point'],
