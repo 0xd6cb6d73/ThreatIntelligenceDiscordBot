@@ -1,27 +1,34 @@
 # Swarmified version
 
-* Preliminary setup
+## Preliminary setup
 - Put your api keys into some files somewhere
+```
+ echo "<your api key here>" > /path/to/secret
+```
+ You can also use a text editor if you don't know whether your `HISTONTROL` environment variable is set to not record commands starting with a space to the history file.
 - Create the docker swarm if you don't already have one (https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/), it can be a single node
+```
+docker swarm init
+```
 - Create the swarm secrets
 ```
 docker secret create <secret name> <path to file containing secret>
 ```
 - Adjust the `docker-compose.yml` file to fit the secret names to those you chose
-- Build the docker images
+- Modify the `TelegramIntelBot/Source/TelegramIntelBot.py` file to set the bot name that you want (in case you already havev a valid `.session` file)
 
-* To build the images
+## Build the images
 ```
 cd <project root>
 docker build -t vxug-discordintelbot:<XXX> ./DiscordIntelBot
 docker build -t vxug-telegramintelbot:<XXX> ./TelegramIntelBot
 ```
 
-* To start the stack
+## Start the stack
 ```
 docker stack deploy -c ./docker-compose.yml <stack name>
 ```
-# Telegram bot warning
+## Telegram bot warning
 The telegram bot needs to have a valid <bot name>.session file at the root of the `TelegramIntelBot` folder. The `docker-compose.yml` file accounts for that by mounting the entire folder to the target directory inside the container.
 
 #################################

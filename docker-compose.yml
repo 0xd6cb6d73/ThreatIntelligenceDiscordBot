@@ -34,7 +34,7 @@ services:
     build:
       context: ./TelegramIntelBot
       dockerfile: Dockerfile
-    image: vxug-telegramintelbot:swarm-1.2
+    image: vxug-telegramintelbot:swarm-1.3
     volumes:
       - type: bind
         source: ./TelegramIntelBot

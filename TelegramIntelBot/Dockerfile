@@ -1,6 +1,6 @@
 FROM python:3.10-alpine3.16
 
-LABEL version="swarm-1.2"
+LABEL version="swarm-1.3"
 
 RUN mkdir -p /app/Source
 RUN mkdir -p /app/TelegramImages
@@ -11,6 +11,7 @@ ENV TZ="Europe/Paris"
 
 WORKDIR /app
 
+COPY ./*.session* ./
 COPY ./requirements.txt ./
 COPY ./Source/TelegramIntelBot.py ./Source/
 RUN chown -R discordbot:botgroup /app/* && chmod +x ./Source/TelegramIntelBot.py
