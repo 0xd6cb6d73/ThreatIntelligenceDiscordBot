@@ -1,6 +1,7 @@
 import sys
 from configparser import ConfigParser, NoOptionError
 from discord import SyncWebhook
+from pathlib import Path
 
 from .Utils import verify_config_section
 
@@ -21,8 +22,7 @@ for section in ["Webhooks", "Telegram"]:
         sys.exit(f'Please specify a "{section}" section in the config file')
 
 if verify_config_section(config, "Webhooks"):
-    webhooks = dict()
-    for hook_name, hook_url in config.items("Webhooks"):
-        with open(f'/run/secrets/{hook_url}', 'r') as f:
-            feed = SyncWebhook.from_url(f.read().strip())
-        webhooks[hook_name, feed]
+   webhooks = {
+        hook_name: SyncWebhook.from_url(Path(f"/run/secrets/{hook_url}").read_text().strip())
+        for hook_name, hook_url in config.items("Webhooks")
+    } 
