@@ -18,39 +18,73 @@ from .. import webhooks, config
 from ..Formatting import format_single_article
 
 private_rss_feed_list = [
-    ['https://grahamcluley.com/feed/', 'Graham Cluley'],
-    ['https://threatpost.com/feed/', 'Threatpost'],
-    ['https://krebsonsecurity.com/feed/', 'Krebs on Security'],
-    ['https://www.darkreading.com/rss.xml', 'Dark Reading'],
-    ['http://feeds.feedburner.com/eset/blog', 'We Live Security'],
-    ['https://davinciforensics.co.za/cybersecurity/feed/', 'DaVinci Forensics'],
-    ['https://blogs.cisco.com/security/feed', 'Cisco'],
-    ['https://www.infosecurity-magazine.com/rss/news/', 'Information Security Magazine'],
-    ['http://feeds.feedburner.com/GoogleOnlineSecurityBlog', 'Google'],
-    ['http://feeds.trendmicro.com/TrendMicroResearch', 'Trend Micro'],
-    ['https://www.bleepingcomputer.com/feed/', 'Bleeping Computer'],
-    ['https://www.proofpoint.com/us/rss.xml', 'Proof Point'],
-    ['http://feeds.feedburner.com/TheHackersNews?format=xml', 'Hacker News'],
-    ['https://www.schneier.com/feed/atom/', 'Schneier on Security'],
-    ['https://www.binarydefense.com/feed/', 'Binary Defense'],
-    ['https://securelist.com/feed/', 'Securelist'],
-    ['https://research.checkpoint.com/feed/', 'Checkpoint Research'],
-    ['https://www.virusbulletin.com/rss', 'VirusBulletin'],
-    ['https://modexp.wordpress.com/feed/', 'Modexp'],
-    ['https://www.tiraniddo.dev/feeds/posts/default', 'James Forshaw'],
-    ['https://blog.xpnsec.com/rss.xml', 'Adam Chester'],
-    ['https://msrc-blog.microsoft.com/feed/', 'Microsoft Security'],
-    ['https://www.recordedfuture.com/feed', 'Recorded Future'],
-    ['https://www.sentinelone.com/feed/', 'SentinelOne'],
-    ['https://redcanary.com/feed/', 'RedCanary'],
-    ['https://cybersecurity.att.com/site/blog-all-rss', 'ATT']
+   ['https://team-cymru.com/feed/', 'Team Cymru'],
+   ['https://www.wiz.io/blog/rss', 'Wiz'],
+   ['https://feeds.feedburner.com/feedburner/Talos', 'Cisco Talos'],
+   ['https://www.cybereason.com/blog/rss.xml', 'CybeReason'],
+   ['https://www.crowdstrike.com/blog/feed', 'Crowdstrike'],
+   ['https://www.microsoft.com/security/blog/tag/microsoft-security-intelligence/feed/', 'MSTIC'],
+   ['https://securelist.com/feed/', 'Securelist'],
+   ['https://stairwell.com/feed/atom/', 'Stairwell'],
+   ['https://any.run/cybersecurity-blog/feed/', 'Any Run'],
+   ['https://www.recordedfuture.com/feed', 'Recorded Future'],
+   ['https://decoded.avast.io/feed/', 'Decoded by Avast'],
+   ['https://cloudblog.withgoogle.com/topics/threat-intelligence/rss', 'Mandiant'],
+   ['https://threatpost.com/feed/', 'Threatpost'],
+   ['https://krebsonsecurity.com/feed/', 'Krebs on Security'],
+   ['http://feeds.feedburner.com/eset/blog', 'We Live Security'],
+   ['https://blog.google/threat-analysis-group/rss/', 'Google TAG'],
+   ['http://feeds.trendmicro.com/TrendMicroResearch', 'Trend Micro'],
+   ['https://www.bleepingcomputer.com/feed/', 'Bleeping Computer'],
+   ['https://www.proofpoint.com/us/rss.xml', 'Proof Point'],
+   ['https://therecord.media/feed', 'The Record'],
+   ['https://www.binarydefense.com/feed/', 'Binary Defense'],
+   ['https://securelist.com/feed/', 'Securelist'],
+   ['https://research.checkpoint.com/feed/', 'Checkpoint Research'],
+   ['https://www.virusbulletin.com/rss', 'VirusBulletin'],
+   ['https://msrc-blog.microsoft.com/feed/', 'Microsoft Security'],
+   ['https://www.recordedfuture.com/feed', 'Recorded Future'],
+   ['https://www.sentinelone.com/feed/', 'SentinelOne'],
+   ['https://redcanary.com/feed/', 'RedCanary'],
+   ['https://cybersecurity.att.com/site/blog-all-rss', 'ATT'],
+   ['https://research.nccgroup.com/category/threat-intelligence/feed/', 'NCC Group'],
+   ['https://isc.sans.edu/rssfeed.xml', 'SANS ISC'],
+   ['https://unit42.paloaltonetworks.com/feed/', 'Unit 42'],
+   ['https://blog.rapid7.com/rss/', 'Rapid7'],
+   ['https://blog.virustotal.com/feeds/posts/default', 'Virus Total'],
+   ['https://www.greynoise.io/blog/rss.xml', 'Greynoise'],
+   ['https://www.cyber-news.fr/feeds/local.xml?sort=New', 'Cyber News'] 
 ]
 
 gov_rss_feed_list = [
     ["https://www.cisa.gov/uscert/ncas/alerts.xml", "US-CERT CISA"],
     ["https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml", "NCSC"],
     ["https://www.cisecurity.org/feed/advisories", "Center of Internet Security"],
+	['https://cert.ssi.gouv.fr/cti/feed/', 'CERT-FR menaces et incidents'],
+	['https://cert.ssi.gouv.fr/actualite/feed/', 'CERT-FR actualites'],
+	['https://cert.ssi.gouv.fr/alerte/feed/', 'CERT-FR alertes']
 ]
+
+anssi_rss_feed_list = [
+    ['https://cert.ssi.gouv.fr/feed/', 'CERT-FR']
+]
+
+rt_rss_feed_list = [
+    ['https://www.trustedsec.com/feed/', 'TrustedSec'],
+    ['https://s3cur3th1ssh1t.github.io/feed.xml', 'S3cur3Th1sSh1t'],
+    ['https://www.blackhillsinfosec.com/feed/', 'Black Hills Infosec'],
+    ['https://googleprojectzero.blogspot.com/feeds/posts/default', 'Google Project Zero'],
+    ['https://modexp.wordpress.com/feed/', 'Modexp'],
+    ['https://www.tiraniddo.dev/feeds/posts/default', 'James Forshaw'],
+    ['http://www.harmj0y.net/blog/feed/', 'harmj0y'],
+    ['https://dirkjanm.io/feed.xml', 'dirkjanm'],
+    ['https://bohops.com/feed/', 'bohops'],
+    ['https://g-laurent.blogspot.com/feeds/posts/default', 'Laurent Gaffié'],
+    ['https://rastamouse.me/', 'RastaMouse'],
+    ['https://wald0.com/?feed=rss2', 'wald0'],
+    ['https://blog.xpnsec.com/rss.xml', 'Adam Chester'],
+    ['https://posts.specterops.io/feed', 'SpecterOps']
+ ]
 
 FeedTypes = Enum("FeedTypes", "RSS JSON")
 
@@ -65,10 +99,20 @@ source_details = {
         "hook": webhooks["GovermentFeed"],
         "type": FeedTypes.RSS,
     },
+	"Flux ANSSI": {
+        "source": anssi_rss_feed_list,
+        "hook": webhooks["AnssiFeed"],
+        "type": FeedTypes.RSS,
+    },
     "Ransomware News": {
         "source": "https://raw.githubusercontent.com/joshhighet/ransomwatch/main/posts.json",
         "hook": webhooks["RansomwareFeed"],
         "type": FeedTypes.JSON,
+    },
+	"Red Team RSS Feed": {
+        "source": rt_rss_feed_list,
+        "hook": webhooks["RedteamFeed"],
+        "type": FeedTypes.RSS,
     },
 }
 
@@ -198,7 +242,7 @@ def main():
 
         write_status_message("All done, going to sleep")
 
-        time.sleep(1800)
+        time.sleep(3600*6)
 
 
 if __name__ == "__main__":
