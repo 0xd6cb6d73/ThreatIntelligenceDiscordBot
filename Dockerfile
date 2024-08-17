@@ -1,4 +1,4 @@
-FROM python:3.12-alpine
+FROM python:3.11-alpine
 
 LABEL version="swarm-2.0.0"
 
@@ -15,10 +15,10 @@ USER discordbot:botgroup
 
 ENV PATH="${PATH}:/home/discordbot/.local/bin"
 
-RUN python3.12 -m pip install --upgrade pip
+RUN python3.11 -m pip install --upgrade pip
 COPY ./requirements.txt ./
 COPY ./config.ini ./
-RUN python3.12 -m pip install -r requirements.txt
+RUN python3.11 -m pip install -r requirements.txt
 
 COPY ./Source/*.py ./Source/
 COPY ./Source/Bots/RSS.py ./Source/Bots
@@ -28,4 +28,4 @@ RUN chown -R discordbot:botgroup /app/* && chmod +x ./Source/*.py && chmod +x ./
 
 USER discordbot:botgroup
 
-CMD [ "python3.10", "-m", "Source", "rss" ]
+CMD [ "python3.11", "-m", "Source", "rss" ]
